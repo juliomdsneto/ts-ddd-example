@@ -7,7 +7,7 @@ export class DiscountCouponMapper extends Mapper<DiscountCoupon, DiscountCouponD
         super();
     }
 
-    entityPersistence(discountCoupon: DiscountCoupon): DiscountCouponDoc{
+    entityToPersistence(discountCoupon: DiscountCoupon): DiscountCouponDoc{
         return new DiscountCouponDoc({
             id: Number(discountCoupon.id.value),
             code: String(discountCoupon.code),
