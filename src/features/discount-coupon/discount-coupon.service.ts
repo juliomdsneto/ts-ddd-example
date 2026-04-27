@@ -2,6 +2,7 @@ import { Reference } from "../../common/entity/reference.common";
 import { DiscountCouponRepository } from "../../repositories/discount-coupon/discount-coupon.repository"
 import { DiscountCoupon } from "../../entities/discount-coupon.entity"
 import { Entity } from "../../common/entity/entity.common";
+import { IDiscountCoupon } from "../../entities/discount-coupon.entity"
 
 export class DiscountCouponService {
     private discountCouponRepository: DiscountCouponRepository;
@@ -10,14 +11,13 @@ export class DiscountCouponService {
         this.discountCouponRepository = new DiscountCouponRepository();
     }
 
-    async create(code: string, value: number) {
+    async create(discountCouponData: IDiscountCoupon ) {
         const discountCoupon = new DiscountCoupon({
-            code: code,
-            value: value
+           code: discountCouponData.code,
+           value: discountCouponData.value
         });
 
-        const saveCoupon = this.discountCouponRepository.save(discountCoupon);
-        return saveCoupon;
+        return this.discountCouponRepository.save(discountCoupon);
     }
 
     async deleteCoupon(id: number) {
@@ -45,7 +45,7 @@ export class DiscountCouponService {
 
     }
 
-    async listCoupons(code: string) {
+    async listCoupons(code?: string) {
 
         if (code) {
 
