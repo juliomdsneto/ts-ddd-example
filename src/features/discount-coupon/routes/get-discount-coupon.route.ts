@@ -16,12 +16,13 @@ type SchemaType = z.infer<typeof schema>;
 
 const route: Endpoint<SchemaType> = async (req, res) => {
   const discountCouponService = new DiscountCouponService();
-  const coupon = await discountCouponService.listCoupons(req.params.code);
+  const couponData = req.params.code;
+  const coupon = await discountCouponService.listCoupons(couponData);
   res.body = coupon;
 };
 
 export const getDiscountCoupon = new Route(
-  "get-discount-coupons",
+  "list-discount-coupons",
   ValidationMiddleware(schema),
   RouteMiddleware(route),
 );
