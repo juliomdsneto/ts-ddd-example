@@ -18,7 +18,10 @@ const route: Endpoint<SchemaType> = async (req, res) => {
   const discountCouponService = new DiscountCouponService();
   const couponId = req.params.id;
   const coupon = await discountCouponService.deleteCoupon(couponId);
-  res.body = {};
+  res.body = {
+    success: true,
+    message: `Coupon ${couponId} deleted`,
+  };
 };
 
 export const deleteCoupon = new Route(

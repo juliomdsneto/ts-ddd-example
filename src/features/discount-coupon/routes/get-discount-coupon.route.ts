@@ -22,7 +22,7 @@ const route: Endpoint<SchemaType> = async (req, res) => {
 };
 
 export const getDiscountCoupon = new Route(
-  "list-discount-coupons",
+  "get-discount-coupons",
   ValidationMiddleware(schema),
   RouteMiddleware(route),
 );

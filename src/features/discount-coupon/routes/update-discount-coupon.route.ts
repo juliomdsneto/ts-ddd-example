@@ -21,14 +21,13 @@ type SchemaType = z.infer<typeof schema>;
 
 const route: Endpoint<SchemaType> = async (req, res) => {
   const discountCouponService = new DiscountCouponService();
-  const couponData = (req.params.id, req.body);
-
   const coupon = await discountCouponService.updateCoupon(
-    couponData.id,
-    couponData.value,
+    req.params.id,
+    req.body.value,
   );
-
   res.body = {
+    id: coupon.id.value,
+    code: coupon.code,
     value: coupon.value,
   };
 };
