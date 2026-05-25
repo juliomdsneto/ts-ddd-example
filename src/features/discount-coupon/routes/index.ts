@@ -13,12 +13,12 @@ discountCouponRouter.post(
 
 discountCouponRouter.patch("/discount-coupons/:id", updateCoupon.middlewares);
 
-discountCouponRouter.delete("discount-coupons/:id", deleteCoupon.middlewares);
+discountCouponRouter.delete("/discount-coupons/:id", deleteCoupon.middlewares);
 
-discountCouponRouter.delete("discount-coupons/:id", deleteCoupon.middlewares);
+discountCouponRouter.delete("/discount-coupons/:id", deleteCoupon.middlewares);
 
 discountCouponRouter.get(
-  "discount-coupons/:code",
+  "/discount-coupons/:code",
   getDiscountCoupon.middlewares,
 );
 
